@@ -1,0 +1,12 @@
+.background-color{ 
+    background-color: rgb(249, 243, 204) !important; 
+}
+
+.custom-btn{
+	background-color: rgb(142, 172, 205);
+}
+
+.custom-btn:hover{
+	background-color: turquoise;
+;
+}

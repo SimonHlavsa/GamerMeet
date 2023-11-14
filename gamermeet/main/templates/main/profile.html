@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+        <div>
+            <div class="position-relative"> 
+                <a href="/logout" class="btn custom-btn position-absolute top-0 start-0 mt-2" >Logout</a>
+                <a href="/settings" class="btn custom-btn position-absolute top-0 end-0 mt-2">Settings</a>
+            </div>
+
+            <h1 class="mb-5 d-flex justify-content-center">Profile</h1>
+
+            <div class="row">
+                <p><strong>First name:</strong> {{user_profile.first_name}}</p>
+                <p><strong>Last name:</strong> {{user_profile.last_name}}</p>
+                <p><strong>Age:</strong> {{user_profile.age}}</p>
+                <p><strong>Favourite games:</strong> {{user_profile.fav_games}}</p>
+                <a href="/edit_profile">Edit profile</a>
+            </div>
+        </div>
+
+        <div class="position-absolute bottom-0 start-50 translate-middle-x">
+            <ul>
+                <li class="list-unstyled">
+                    <a href="/discover" class="btn custom-btn mx-3">Discover</a>
+                    <a href="/contacts" class="btn custom-btn mx-3">Contacts</a>
+                    <a href="/profile" class="btn custom-btn mx-3">Profile</a>
+                </li>
+            </ul>
+        </div>
+
+{% endblock content %}
