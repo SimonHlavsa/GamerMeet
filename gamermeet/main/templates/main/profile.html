@@ -1,26 +1,34 @@
 {% extends "main/base.html" %}
 {% block content %}
+    <div class="d-flex flex-column justify-content-between vh-100">
 
         <div>
+
             <div class="position-relative"> 
                 <a href="/logout" class="btn custom-btn position-absolute top-0 start-0 mt-2" >Logout</a>
                 <a href="/settings" class="btn custom-btn position-absolute top-0 end-0 mt-2">Settings</a>
             </div>
 
-            <h1 class="mb-5 d-flex justify-content-center">Profile</h1>
+            <div class="row align-items-start mb-5">
+                <h1 class="col text-center">Profile</h1>
+            </div>
 
+            
+        </div>
+        
+        <div class="col text-center align-items-center">
             <div class="row">
                 <p><strong>First name:</strong> {{user_profile.first_name}}</p>
                 <p><strong>Last name:</strong> {{user_profile.last_name}}</p>
                 <p><strong>Age:</strong> {{user_profile.age}}</p>
                 <p><strong>Favourite games:</strong> {{user_profile.fav_games}}</p>
-                <a href="/edit_profile">Edit profile</a>
+                <a href="/edit_profile" class="text-decoration-none fw-bold fs-4 text-dark">Edit profile</a>
             </div>
         </div>
 
-        <div class="position-absolute bottom-0 start-50 translate-middle-x">
-            <ul>
-                <li class="list-unstyled">
+        <div class="row align-items-end ">
+            <ul class="col text-center list-unstyled" >
+                <li>
                     <a href="/discover" class="btn custom-btn mx-3">Discover</a>
                     <a href="/contacts" class="btn custom-btn mx-3">Contacts</a>
                     <a href="/profile" class="btn custom-btn mx-3">Profile</a>
@@ -28,4 +36,5 @@
             </ul>
         </div>
 
+    </div>
 {% endblock content %}

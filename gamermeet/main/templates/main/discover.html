@@ -1,27 +1,59 @@
 {% extends "main/base.html" %}
 {% block content %}
 
-    <div class="">
-        <h1 class="mb-5 d-flex justify-content-center">Discover</h1>
+    
+    <div class="d-flex flex-column justify-content-between vh-100">
 
-        <div>
-            <form action="{ url 'like_user' reciver.pk}" method="POST">
-                {% csrf_token %}
-                <button type="submit" name="reciver_id" value="{{ user.id }}">Like</button>
-            </form>
+        <div class="row align-items-start mb-5">
+            <h1 class="col text-center">Discover</h1>
         </div>
 
-
-        <div class="position-absolute bottom-0 start-50 translate-middle-x">
-            <ul>
-                <li class="list-unstyled">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="row align-items-start flex-grow-1 justify-content-center">
+                {% if person_to_show is None %}
+    
+                    <div class="col-12 text-center">    
+                        <h1>momentálně není nikdo další k zobrazení</h1>
+                    </div>
+    
+                {% else %}
+    
+                    <div class="col-12 text-center mb-4">
+                        <h2 class="col text-center">First name: {{person_to_show.first_name}}</h2>
+                        <h2 class="col text-center">Last name: {{person_to_show.last_name}}</h2>
+                        <h2 class="col text-center">Age: {{person_to_show.age}}</h2>
+                        <h2 class="col text-center">Favourite games: {{person_to_show.fav_games}}</h2>
+                    </div>
+    
+                    <div class="col-12 text-center d-flex justify-content-evenly">
+                        <form action="{% url 'dislike_user' person_to_show.user.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="person_id" value="{{ person_to_show.user.id }}" class="btn btn-danger">Dislike</button>
+                        </form>
+    
+                        <form action="{% url 'like_user' person_to_show.user.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="person_id" value="{{ person_to_show.user.id }}" class="btn btn-success">Like</button>
+                        </form>
+                    </div>
+    
+                {% endif %}
+            </div>
+        </div>
+    
+    
+        <div class="row align-items-end ">
+            <ul class="col text-center list-unstyled" >
+                <li>
                     <a href="/discover" class="btn custom-btn mx-3">Discover</a>
                     <a href="/contacts" class="btn custom-btn mx-3">Contacts</a>
                     <a href="/profile" class="btn custom-btn mx-3">Profile</a>
                 </li>
-
             </ul>
         </div>
+
     </div>
+
+    
 
 {% endblock content %}
