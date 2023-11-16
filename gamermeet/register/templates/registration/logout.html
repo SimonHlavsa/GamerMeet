@@ -1,0 +1,11 @@
+{% extends "registration/base_authentication.html" %}
+{% load crispy_forms_tags %}
+
+{% block authentication_content %}
+
+    <div class="d-flex flex-column justify-content-evenly vh-100">
+        <h1 class="text-center">You have been loged out</h1>
+        <h2 class="text-center"><a href="{% url "home" %}" class="text-decoration-none text-danger">Return home</a></h2>
+    </div>
+
+{% endblock authentication_content %}
