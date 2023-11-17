@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import render
 from django.views import generic 
 from django.urls import reverse_lazy
@@ -37,8 +37,8 @@ class EditUserProfile(generic.UpdateView):
         return UserProfile.objects.get(user=self.request.user)
 
 
-
 def Logout(response):
+    logout(response)
     return render(response, "registration/logout.html", {})
 
 # def register(response):

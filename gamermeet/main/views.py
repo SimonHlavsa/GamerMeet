@@ -7,6 +7,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 
 def home(response):
+    if response.user.is_authenticated:
+        return HttpResponseRedirect(reverse("discover"))  
     return render(response, "main/home.html", {})
     
 @login_required
