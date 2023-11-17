@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from register.models import UserProfile
-from main.models import Likes
+from main.models import Likes, Matches
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 
@@ -62,5 +62,11 @@ def profile(response):
     
 @login_required
 def contacts(response):
-    return render(response, "main/contacts.html", {})
+    matches = Matches.objects.all()
+    return render(response, "main/contacts.html", {"matches":matches})
+
+def contact_profile(request, pk):
+    user = User.objects.get(id=pk)
+    user_profile = UserProfile.objects.get(user=user)
+    return render(request, "main/profile.html", {"user_profile": user_profile})
 

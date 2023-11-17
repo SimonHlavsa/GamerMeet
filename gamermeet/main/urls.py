@@ -8,4 +8,5 @@ urlpatterns = [
 	path("contacts/", views.contacts, name="contacts"),
 	path("like/<int:pk>", views.LikeView, name="like_user"),
 	path("dislike/<int:pk>", views.DislikeView, name="dislike_user"),
+	path("contact_profile/<int:pk>", views.contact_profile, name="contact_profile")
 ]

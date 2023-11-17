@@ -2,21 +2,35 @@
 
 {% block content %}
 
-    <div class="d-flex flex-column justify-content-between vh-100">
+<div class="d-flex flex-column justify-content-between vh-100">
 
-        <div class="row align-items-start mb-5">
-            <h1 class="col text-center">Contacts</h1>
-        </div>
-
-        <div class="row align-items-end ">
-            <ul class="col text-center list-unstyled" >
-                <li>
-                    <a href="/discover" class="btn custom-btn mx-3">Discover</a>
-                    <a href="/contacts" class="btn custom-btn mx-3">Contacts</a>
-                    <a href="/profile" class="btn custom-btn mx-3">Profile</a>
-                </li>
-            </ul>
-        </div>
+    <div class="row align-items-start mb-5">
+        <h1 class="col text-center">Contacts</h1>
     </div>
 
+    <div class="col">
+        {% for match in matches %}
+        <div class="col">
+            {% if user == match.user1 %}
+                <h2><a href="{% url 'contact_profile' match.user2.id %}" class="text-decoration-none text-dark">{{match.user2}}</a></h2> 
+            {% elif user == match.user2 %}
+                <h2><a href="{% url 'contact_profile' match.user1.id %}" class="text-decoration-none text-dark">{{match.user1}}</a></h2>
+            {% endif %}  
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row align-items-end ">
+        <ul class="col text-center list-unstyled" >
+            <li>
+                <a href="/discover" class="btn custom-btn mx-3">Discover</a>
+                <a href="/contacts" class="btn custom-btn mx-3">Contacts</a>
+                <a href="/profile" class="btn custom-btn mx-3">Profile</a>
+            </li>
+        </ul>
+    </div>
+</div> 
+
+
 {% endblock content %}
+
